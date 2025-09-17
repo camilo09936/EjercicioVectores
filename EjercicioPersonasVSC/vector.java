@@ -9,7 +9,7 @@ public vector(int max){
     this.vectorPersonas= new Personas[max];
 }
 
-public int getMax() {
+public int getMax() {                                                                                                         
     return max;
 }
 
