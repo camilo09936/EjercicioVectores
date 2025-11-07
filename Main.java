@@ -47,7 +47,9 @@ public class Main {
 
                     switch(OpcionVector){
                         case 1:{
-                        System.out.println("AGREGAR PERSONA");
+                        Personas p= crearPersonas(leer);
+                        v.agregarPersona(p);
+                        /*System.out.println("AGREGAR PERSONA");
                         System.out.println("Nombre: ");
                         String nombre= leer.nextLine();
                         System.out.println("Apellido: ");
@@ -60,7 +62,7 @@ public class Main {
                         float altura= leer.nextFloat();
                         leer.nextLine();
                         Personas p= new Personas(nombre, apellido, edad, peso, altura);
-                        v.agregarPersona(p);
+                        v.agregarPersona(p);*/
                         break;
                     }
                     case 2:
@@ -136,7 +138,9 @@ public class Main {
 
             switch(OpcionMatriz){
                 case 1: {
-                    System.out.println("Agregar Persona a Matriz");
+                    Personas p= crearPersonas(leer);
+                    m.ingresarPersonaSecuencial2(p);
+                    /*System.out.println("Agregar Persona a Matriz");
                     System.out.print("Nombre: ");
                     String nombre= leer.nextLine();
                     System.out.println("Apellido: ");
@@ -149,7 +153,7 @@ public class Main {
                     float altura= leer.nextFloat();
                     leer.nextLine();
                     Personas p= new Personas(nombre, apellido, edad, peso, altura);
-                    m.ingresarPersonaSecuencial2(p);
+                    m.ingresarPersonaSecuencial2(p);*/
                     break;
                 }
                 case 2: 

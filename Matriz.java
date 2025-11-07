@@ -58,7 +58,7 @@ public boolean matrizLlena(){
 }
 public void agregarPersonaPorPosicion(Personas p, int fila, int columna){
     if(!matrizLlena()){
-        if (fila>= 0 && fila < fila && columna >= 0 && columna < columna){
+        if (fila>= 0 && fila < this.fila && columna >= 0 && columna < this.columna){
             if (this.matrizPersonas[fila][columna] == null){
                 this.matrizPersonas[fila][columna] = p;
             }else{
