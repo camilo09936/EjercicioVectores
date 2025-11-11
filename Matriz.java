@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Matriz {
 private int Indicef;
 private int Indicec;
@@ -7,12 +9,19 @@ private Personas [][] matrizPersonas;
 
 public Matriz(){
 }
-public Matriz(int filas, int columnas){
-    this.fila= filas;
-    this.columna= columnas;
+public Matriz(Scanner leer){
+    while (true) {
+        System.out.println("Ingrese número de filas (Solo matriz cuadrada): ");
+        fila= leer.nextInt();
+        System.out.println("Ingrese número de columnas (Solo matriz cuadrada): ");
+        columna= leer.nextInt();
+        leer.nextLine();
+        if (fila==columna) break;
+        System.out.println("La matriz debe ser cuadrada, intente de nuevo.");
+    }
     this.Indicef=-1;
-    this.Indicec=-1; 
-    this.matrizPersonas = new Personas [filas] [columnas];
+    this.Indicec=-1;
+    this.matrizPersonas= new Personas[fila][columna];
 }
 public int getIndicef() {
     return Indicef;
@@ -71,21 +80,6 @@ public void agregarPersonaPorPosicion(Personas p, int fila, int columna){
         System.out.println("La matriz esta llena");
     }
 }
-//public void ingresarPersonaSecuencial(Personas p){
-   // if (matrizVacia()){
-    //this.Indicec++;
-    //this.Indicef++;
-   // this.matrizPersonas[this.fila][this.columna]= p;
-   // }else{
-      //  if(!matrizLlena() && this.Indicec != this.columna){
-       //     this.Indicec++;
-      //      this.matrizPersonas[this.fila][this.columna]= p;
-       // }else{
-       //     this.Indicef++;
-       //     this.matrizPersonas[this.Indicef][this.Indicec]= p;
-      //  }
-   // }
-//}
 public void ingresarPersonaSecuencial2(Personas p){
     if (matrizVacia()){
         this.Indicef=0;

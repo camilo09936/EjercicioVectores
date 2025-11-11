@@ -17,7 +17,8 @@ public class Main {
             System.out.printf("| %-2s %-53s |\n", "1.", "Gestionar Con Vector");
             System.out.printf("| %-2s %-53s |\n", "2.", "Gestionar Con Matriz");
             System.out.printf("| %-2s %-53s |\n", "3.", "Gestionar Con Listas Simples");
-            System.out.printf("| %-2s %-53s |\n", "4.", "Salir");
+            System.out.printf("| %-2s %-53s |\n", "4.", "Gestionar Con Listas Doblemente Enlazadas");
+            System.out.printf("| %-2s %-53s |\n", "5.", "Salir");
             System.out.println("===========================================================");
             System.out.print("Elige Una Opcion: ");
             int OpcionPrincipal= leer.nextInt();
@@ -49,20 +50,6 @@ public class Main {
                         case 1:{
                         Personas p= crearPersonas(leer);
                         v.agregarPersona(p);
-                        /*System.out.println("AGREGAR PERSONA");
-                        System.out.println("Nombre: ");
-                        String nombre= leer.nextLine();
-                        System.out.println("Apellido: ");
-                        String apellido= leer.nextLine();
-                        System.out.println("Edad: ");
-                        byte edad= leer.nextByte();
-                        System.out.println("Peso: ");
-                        float peso= leer.nextFloat();
-                        System.out.println("Altura: ");
-                        float altura= leer.nextFloat();
-                        leer.nextLine();
-                        Personas p= new Personas(nombre, apellido, edad, peso, altura);
-                        v.agregarPersona(p);*/
                         break;
                     }
                     case 2:
@@ -103,21 +90,7 @@ public class Main {
         }
         break;
         case 2:
-        int filas, columnas;
-        while(true){
-            System.out.print("Ingrese Numero de Filas Para la Matriz (Solo Se Permite Matriz Cuadrada): ");
-            filas= leer.nextInt();
-            System.out.print("Ingrese Numero de Columnas Para la Matriz (Solo Se Permite Matriz Cuadrada): ");
-            columnas= leer.nextInt();
-            leer.nextLine();
-            
-            if (filas==columnas){
-                break;
-            }else{
-                System.out.println("La Matriz Debe Ser Cuadrada");
-            }
-        }
-        Matriz m= new Matriz(filas, columnas);
+        Matriz m= new Matriz(leer);
         boolean SalirMatriz= false;
         while(!SalirMatriz){
             System.out.println("====================================================");
@@ -140,20 +113,6 @@ public class Main {
                 case 1: {
                     Personas p= crearPersonas(leer);
                     m.ingresarPersonaSecuencial2(p);
-                    /*System.out.println("Agregar Persona a Matriz");
-                    System.out.print("Nombre: ");
-                    String nombre= leer.nextLine();
-                    System.out.println("Apellido: ");
-                    String apellido= leer.nextLine();
-                    System.out.println("Edad: ");
-                    byte edad= leer.nextByte();
-                    System.out.println("Peso: ");
-                    float peso= leer.nextFloat();
-                    System.out.println("Altura: ");
-                    float altura= leer.nextFloat();
-                    leer.nextLine();
-                    Personas p= new Personas(nombre, apellido, edad, peso, altura);
-                    m.ingresarPersonaSecuencial2(p);*/
                     break;
                 }
                 case 2: 
@@ -257,10 +216,73 @@ public class Main {
                         SalirLista= true;
                         break;
                     default:
-                        break;
+                        System.out.println("Opción Invalida.");
                 }
             }
+            break;
         case 4:
+        ListaDoble listaDoble= new ListaDoble();
+        boolean SalirListaDoble= false;
+
+        while(!SalirListaDoble){
+            System.out.println("==========================================");
+                System.out.printf("| %-38s |\n", "MENU LISTA DOBLE");
+                System.out.println("==========================================");
+                System.out.printf("| %-2s %-35s |\n", "1.", "Agregar Persona al Inicio");
+                System.out.printf("| %-2s %-35s |\n", "2.", "Agregar Persona al Final");
+                System.out.printf("| %-2s %-35s |\n", "3.", "Agregar Persona Antes de X Nombre");
+                System.out.printf("| %-2s %-35s |\n", "4.", "Mostrar Lista de Inicio a Fin");
+                System.out.printf("| %-2s %-35s |\n", "5.", "Mostrar Lista de Fin a Inicio");
+                System.out.printf("| %-2s %-35s |\n", "6.", "Contar Personas");
+                System.out.printf("| %-2s %-35s |\n", "7.", "Eliminar Persona por Nombre");
+                System.out.printf("| %-2s %-35s |\n", "8.", "Volver al Menú Principal");
+                System.out.println("==========================================");
+                System.out.print("Elige Una Opción: ");
+                
+        int opcionDoble= leer.nextInt();
+        leer.nextLine();
+
+        switch (opcionDoble) {
+            case 1:{
+                Personas p= crearPersonas(leer);
+                listaDoble.agregarPersonaInicio(p);
+                break;
+            }
+            case 2:{
+                Personas p= crearPersonas(leer);
+                listaDoble.agregarPersonaFinal(p);
+                break;
+            }
+            case 3:{
+                System.out.println("Ingrese la Persona siguiente a la que se insertara la persona 'X': ");
+                String nombreRef= leer.nextLine();
+                Personas nueva= crearPersonas(leer);
+                listaDoble.agregarPersonaAntesDeNombre(nueva, nombreRef);  
+                break;  
+            }
+            case 4:
+            listaDoble.mostrarLista();
+            break;
+            case 5:
+            listaDoble.mostrarListaInversa();
+            break;
+            case 6:
+            System.out.println("Cantidad de Personas: " +listaDoble.contarNodos());
+            break;
+            case 7:
+            System.out.println("Ingrese Nombre de Persona a Eliminar: ");
+            String nombreEliminar= leer.nextLine();
+            listaDoble.eliminarPersonaPorNombre(nombreEliminar);
+            break;
+            case 8:
+            SalirListaDoble= true;
+            break;
+            default:
+            System.out.println("Opción Invalida.");
+            }
+        }
+        break;
+        case 5:
         System.out.println("Saliendo Del Sistema...");
         SalirMenuPrincipal= true;
         break;
